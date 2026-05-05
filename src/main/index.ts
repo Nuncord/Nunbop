@@ -9,11 +9,11 @@ import { CommandLine } from "./cli";
 if (CommandLine.values.repair) {
     (async () => {
         const { State } = await import("./settings");
-        if (State.store.equicordDir) {
-            console.error("Cannot repair: using custom Equicord directory.");
+        if (State.store.nuncordDir) {
+            console.error("Cannot repair: using custom Nuncord directory.");
             process.exit(1);
         }
-        console.log("Repairing Equicord...");
+        console.log("Repairing Nuncord...");
         const { downloadVencordAsar } = await import("./utils/vencordLoader");
         await downloadVencordAsar();
         console.log("Repair complete.");
