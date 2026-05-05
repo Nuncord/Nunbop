@@ -262,7 +262,7 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
                         case 2: // about
                             createAboutWindow();
                             break;
-                        case 3: // repair equicord
+                        case 3: // repair nunbop
                             downloadVencordAsar().then(() => {
                                 setTimeout(() => {
                                     destroyTray();
@@ -271,7 +271,7 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
                                 }, 0);
                             });
                             break;
-                        case 4: // reset Equibop
+                        case 4: // reset nunbop
                             clearData(win);
                             break;
                         case 5: // launch arguments
