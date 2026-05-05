@@ -1,15 +1,15 @@
-# Equibop [<img src="/static/icon.png" width="225" align="right" alt="Equibop">](https://github.com/Equicord/Equibop)
+# Nunbop [<img src="/static/icon.png" width="225" align="right" alt="Nunbop">](https://github.com/Nuncord/Nunbop)
 
-[![Equicord](https://img.shields.io/badge/Equicord-grey?style=flat)](https://github.com/Equicord/Equicord)
-[![Tests](https://github.com/Equicord/Equibop/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/Equicord/Equibop/actions/workflows/test.yml)
-[![Discord](https://img.shields.io/discord/1173279886065029291.svg?color=768AD4&label=Discord&logo=discord&logoColor=white)](https://equicord.org/discord)
+[![Nuncord](https://img.shields.io/badge/Nuncord-grey?style=flat)](https://github.com/Nuncord/Nuncord)
+[![Tests](https://github.com/Nuncord/Nunbop/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/Nuncord/Nunbop/actions/workflows/test.yml)
+[![Discord](https://img.shields.io/discord/1173279886065029291.svg?color=768AD4&label=Discord&logo=discord&logoColor=white)](https://Nuncord.org/discord)
 
-Equibop is a fork of [Vesktop](https://github.com/Vencord/Vesktop).
+Nunbop is a fork of [Vesktop](https://github.com/Vencord/Vesktop).
 
-You can join our [discord server](https://equicord.org/discord) for commits, changes, chat or even support.<br></br>
+You can join our [discord server](https://Nuncord.org/discord) for commits, changes, chat or even support.<br></br>
 
 **Main features**:
-- Equicord preinstalled
+- Nuncord preinstalled
 - Much more lightweight and faster than the official Discord app
 - Linux Screenshare with sound & wayland
 - Much better privacy, since Discord has no access to your system
@@ -18,7 +18,7 @@ You can join our [discord server](https://equicord.org/discord) for commits, cha
 
 - Tray Customization with voice detection and notification badges
 - Command-line flags to toggle microphone and deafen status (Linux)
-- Custom Arguments from [this PR](https://github.com/Equicord/Equibop/pull/46)
+- Custom Arguments from [this PR](https://github.com/Nuncord/Nunbop/pull/46)
 - arRPC-bun with debug logging support https://github.com/Creationsss/arrpc-bun
 
 **Linux Note**:
@@ -28,11 +28,11 @@ You can join our [discord server](https://equicord.org/discord) for commits, cha
 **Not fully Supported**:
 - Global Keybinds (Windows/macOS - use command-line flags on Linux instead)
 
-# Equibop Arguments
+# Nunbop Arguments
 
 ### Runtime Flags
 These flags can be passed when launching the application  
-(or via `Right-click on the Equibop tray icon > Launch arguments`):
+(or via `Right-click on the Nunbop tray icon > Launch arguments`):
 
 ```bash
 --wayland
@@ -78,7 +78,7 @@ These arguments are parsed during the build process:
 The launcher supports a flags file located at:
 
 ```
-${XDG_CONFIG_HOME}/equibop-flags.conf
+${XDG_CONFIG_HOME}/Nunbop-flags.conf
 ```
 
 **Rules:**
@@ -87,17 +87,17 @@ ${XDG_CONFIG_HOME}/equibop-flags.conf
 - Valid entries are appended to the execution command
 
 ## Installing
-Check the [Releases](https://github.com/Equicord/Equibop/releases) page
+Check the [Releases](https://github.com/Nuncord/Nunbop/releases) page
 
 OR
 
-Check The Downloads from the [website](https://equicord.org/download)
+Check The Downloads from the [website](https://Nuncord.org/download)
 
 ### Linux
 
-[![Equibop](https://img.shields.io/badge/AVAILABLE_ON_THE_AUR-333232?style=for-the-badge&logo=arch-linux&logoColor=0F94D2&labelColor=%23171717)](https://aur.archlinux.org/packages?O=0&K=equibop)
+[![Nunbop](https://img.shields.io/badge/AVAILABLE_ON_THE_AUR-333232?style=for-the-badge&logo=arch-linux&logoColor=0F94D2&labelColor=%23171717)](https://aur.archlinux.org/packages?O=0&K=Nunbop)
 <br>
-<!-- <a href="https://flathub.org/apps/io.github.equicord.equibop">
+<!-- <a href="https://flathub.org/apps/io.github.Nuncord.Nunbop">
   <img src="https://flathub.org/api/badge?svg" alt="Download on Flathub" style="width:220px; height:auto;">
 </a> -->
 
@@ -105,9 +105,9 @@ Check The Downloads from the [website](https://equicord.org/download)
 
 Below you can find unofficial packages created by the community. They are not officially supported by us, so before reporting issues, please first confirm the issue also happens on official builds. When in doubt, consult with their packager first. The AppImage should work on any distro that supports them, so I recommend you just use that instead!
 
-- Arch Linux: [Equibop on the Arch user repository](https://aur.archlinux.org/packages?K=equibop)
-- Void Linux: [Equibop on the Void repository](https://void.creations.works/)
-- NixOS: `nix-shell -p equibop`
+- Arch Linux: [Nunbop on the Arch user repository](https://aur.archlinux.org/packages?K=Nunbop)
+- Void Linux: [Nunbop on the Void repository](https://void.creations.works/)
+- NixOS: `nix-shell -p Nunbop`
 
 ## Building from Source
 
@@ -118,8 +118,8 @@ You need to have the following dependencies installed:
 Packaging will create builds in the dist/ folder
 
 ```sh
-git clone https://github.com/Equicord/Equibop
-cd Equibop
+git clone https://github.com/Nuncord/Nunbop
+cd Nunbop
 
 # Install Dependencies
 bun install
@@ -139,11 +139,11 @@ bun package:dir
 
 ## Building LibVesktop from Source
 
-This is a small C++ helper library Equibop uses on Linux to emit D-Bus events. By default, prebuilt binaries for x64 and arm64 are used.
+This is a small C++ helper library Nunbop uses on Linux to emit D-Bus events. By default, prebuilt binaries for x64 and arm64 are used.
 
 If you want to build it from source:
 1. Install build dependencies:
     - Debian/Ubuntu: `apt install build-essential python3 curl pkg-config libglib2.0-dev`
     - Fedora: `dnf install @c-development @development-tools python3 curl pkgconf-pkg-config glib2-devel`
 2. Run `bun buildLibVesktop`
-3. From now on, building Equibop will use your own build
+3. From now on, building Nunbop will use your own build
