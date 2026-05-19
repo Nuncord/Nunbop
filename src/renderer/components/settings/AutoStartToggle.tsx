@@ -1,10 +1,10 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { useState } from "@equicord/types/webpack/common";
+import { useState } from "@nuncord/types/webpack/common";
 
 import { SettingsComponent } from "./Settings";
 import { VesktopSettingsSwitch } from "./VesktopSettingsSwitch";
@@ -16,7 +16,7 @@ export const AutoStartToggle: SettingsComponent = ({ settings }) => {
         <>
             <VesktopSettingsSwitch
                 title="Start With System"
-                description="Automatically start Equibop on computer start-up"
+                description="Automatically start Nunbop on computer start-up"
                 value={autoStartEnabled}
                 onChange={async v => {
                     await VesktopNative.autostart[v ? "enable" : "disable"]();
@@ -26,7 +26,7 @@ export const AutoStartToggle: SettingsComponent = ({ settings }) => {
 
             <VesktopSettingsSwitch
                 title="Auto Start Minimized"
-                description={"Start Equibop minimized when starting with system"}
+                description={"Start Nunbop minimized when starting with system"}
                 value={settings.autoStartMinimized ?? false}
                 onChange={v => (settings.autoStartMinimized = v)}
                 disabled={!autoStartEnabled}

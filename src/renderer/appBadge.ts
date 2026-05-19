@@ -1,13 +1,13 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { filters, waitFor } from "@equicord/types/webpack";
-import { RelationshipStore } from "@equicord/types/webpack/common";
+import { filters, waitFor } from "@nuncord/types/webpack";
+import { RelationshipStore } from "@nuncord/types/webpack/common";
 
-import { VesktopLogger } from "./logger";
+import { NunbopLogger } from "./logger";
 import { Settings } from "./settings";
 
 let GuildReadStateStore: any;
@@ -30,7 +30,7 @@ export function setBadge() {
 
         VesktopNative.app.setBadgeCount(totalCount);
     } catch (e) {
-        VesktopLogger.error("Failed to update badge count", e);
+        NunbopLogger.error("Failed to update badge count", e);
     }
 }
 

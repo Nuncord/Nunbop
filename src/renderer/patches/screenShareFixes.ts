@@ -1,15 +1,15 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { Logger } from "@equicord/types/utils";
+import { Logger } from "@nuncord/types/utils";
 import { currentSettings } from "renderer/components/ScreenSharePicker";
 import { State } from "renderer/settings";
 import { isLinux } from "renderer/utils";
 
-const logger = new Logger("EquibopStreamFixes");
+const logger = new Logger("NunbopStreamFixes");
 
 if (isLinux) {
     const original = navigator.mediaDevices.getDisplayMedia;

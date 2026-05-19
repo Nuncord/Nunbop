@@ -1,6 +1,6 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
- * Copyright (c) 2025 Vendicated and Vesktop contributors
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
+ * Copyright (c) 2026 Vendicated and Nunbop contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -12,7 +12,7 @@ function classes(...classes: Array<string | null | undefined | false>) {
     return classes.filter(Boolean).join(" ");
 }
 
-export function VesktopSettingsIcon({ height = 24, width = 24, className, fill, ...svgProps }: IconProps) {
+export function NunbopSettingsIcon({ height = 24, width = 24, className, fill, ...svgProps }: IconProps) {
     return (
         <svg
             className={classes(className, "vc-icon")}

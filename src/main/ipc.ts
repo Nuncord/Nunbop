@@ -48,8 +48,8 @@ handleSync(IpcEvents.GET_VENCORD_RENDERER_SCRIPT, () => readFileSync(join(VENCOR
 
 const RENDERER_JS_PATH = join(__dirname, "renderer.js");
 const RENDERER_CSS_PATH = join(__dirname, "renderer.css");
-handleSync(IpcEvents.GET_RENDERER_SCRIPT, () => readFileSync(VESKTOP_RENDERER_JS_PATH, "utf-8"));
-handle(IpcEvents.GET_RENDERER_CSS, () => readFile(VESKTOP_RENDERER_CSS_PATH, "utf-8"));
+handleSync(IpcEvents.GET_RENDERER_SCRIPT, () => readFileSync(RENDERER_JS_PATH, "utf-8"));
+handle(IpcEvents.GET_RENDERER_CSS, () => readFile(RENDERER_CSS_PATH, "utf-8"));
 
 if (IS_DEV) {
     watch(RENDERER_CSS_PATH, { persistent: false }, async () => {

@@ -1,5 +1,5 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -17,15 +17,15 @@ export * as Components from "./components";
 import { VoiceActions } from "@nuncord/types/webpack/common";
 
 import SettingsUi from "./components/settings/Settings";
-import { VesktopLogger } from "./logger";
+import { NunbopLogger } from "./logger";
 import { Settings } from "./settings";
 export { Settings };
 
 import type SettingsPlugin from "@nuncord/types/plugins/_core/settings";
-import { VesktopSettingsIcon } from "shared/icons";
+import { NunbopSettingsIcon } from "shared/icons";
 
-VesktopLogger.log("read if cute :3");
-VesktopLogger.log(`Nunbop v${VesktopNative.app.getVersion()}`);
+NunbopLogger.log("read if cute :3");
+NunbopLogger.log(`Nunbop v${VesktopNative.app.getVersion()}`);
 
 const { customEntries, customSections } = Vencord.Plugins.plugins.Settings as any as typeof SettingsPlugin;
 
@@ -33,7 +33,7 @@ customEntries.push({
     key: "nuncord_nunbop_settings",
     title: "Nunbop Settings",
     Component: SettingsUi,
-    Icon: VesktopSettingsIcon
+    Icon: NunbopSettingsIcon
 });
 
 customSections.push(() => ({

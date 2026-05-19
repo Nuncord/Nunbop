@@ -1,13 +1,13 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 import "./settings.css";
 
-import { classNameFactory } from "@equicord/types/api/Styles";
-import { BaseText, Divider, ErrorBoundary } from "@equicord/types/components";
+import { classNameFactory } from "@nuncord/types/api/Styles";
+import { BaseText, Divider, ErrorBoundary } from "@nuncord/types/components";
 import { ComponentType } from "react";
 import { Settings, useSettings } from "renderer/settings";
 import { isMac, isWindows } from "renderer/utils";
@@ -65,7 +65,7 @@ const SettingsOptions: Record<string, Array<BooleanSetting | SettingsComponent>>
         {
             key: "staticTitle",
             title: "Static Title",
-            description: 'Makes the window title "Equibop" instead of changing to the current page',
+            description: 'Makes the window title "Nunbop" instead of changing to the current page',
             defaultValue: false
         },
         {
@@ -79,7 +79,7 @@ const SettingsOptions: Record<string, Array<BooleanSetting | SettingsComponent>>
             key: "enableSplashScreen",
             title: "Enable Splash Screen",
             description:
-                "Shows a small splash screen while Equibop is loading. Disabling this option will show the main window earlier while it's still loading.",
+                "Shows a small splash screen while Nunbop is loading. Disabling this option will show the main window earlier while it's still loading.",
             defaultValue: true
         },
         {
@@ -101,14 +101,14 @@ const SettingsOptions: Record<string, Array<BooleanSetting | SettingsComponent>>
         {
             key: "tray",
             title: "Tray Icon",
-            description: "Add a tray icon for Equibop",
+            description: "Add a tray icon for Nunbop",
             defaultValue: true,
             invisible: () => isMac
         },
         {
             key: "minimizeToTray",
             title: "Minimize to tray",
-            description: "Hitting X will make Equibop minimize to the tray instead of closing",
+            description: "Hitting X will make Nunbop minimize to the tray instead of closing",
             defaultValue: true,
             invisible: () => isMac,
             disabled: () => Settings.store.tray === false
@@ -116,7 +116,7 @@ const SettingsOptions: Record<string, Array<BooleanSetting | SettingsComponent>>
         {
             key: "clickTrayToShowHide",
             title: "Hide/Show on tray click",
-            description: "Left clicking tray icon will toggle the Equibop window visibility.",
+            description: "Left clicking tray icon will toggle the Nunbop window visibility.",
             defaultValue: false
         },
         {
@@ -152,7 +152,7 @@ const SettingsOptions: Record<string, Array<BooleanSetting | SettingsComponent>>
         {
             key: "openLinksWithElectron",
             title: "Open Links in app (experimental)",
-            description: "Opens links in a new Equibop window instead of your web browser",
+            description: "Opens links in a new Nunbop window instead of your web browser",
             defaultValue: false
         }
     ],
@@ -207,6 +207,6 @@ export default ErrorBoundary.wrap(
     },
     {
         message:
-            "Failed to render the Equibop Settings tab. If this issue persists, try to right click the Equibop tray icon, then click 'Repair Equicord'. And make sure your Equibop is up to date."
+            "Failed to render the Nunbop Settings tab. If this issue persists, try to right click the Nunbop tray icon, then click 'Repair Nuncord'. And make sure your Nunbop is up to date."
     }
 );

@@ -1,6 +1,6 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
- * Copyright (c) 2025 Vendicated and Vesktop contributors
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
+ * Copyright (c) 2026 Vendicated and Nunbop contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -38,7 +38,7 @@ export async function githubGet(endpoint: string) {
 
 export async function downloadVencordAsar() {
     await downloadFile(
-        "https://github.com/Nuncord/Nuncord/releases/latest/download/equibop.asar",
+        "https://github.com/Nuncord/Nuncord/releases/latest/download/nunbop.asar",
         VENCORD_DIR,
         {},
         { retryOnNetworkError: true }

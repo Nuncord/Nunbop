@@ -1,11 +1,11 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { addContextMenuPatch } from "@equicord/types/api/ContextMenu";
-import { FluxDispatcher, Menu, SpellCheckStore, useMemo, useStateFromStores } from "@equicord/types/webpack/common";
+import { addContextMenuPatch } from "@nuncord/types/api/ContextMenu";
+import { FluxDispatcher, Menu, SpellCheckStore, useMemo, useStateFromStores } from "@nuncord/types/webpack/common";
 import { useSettings } from "renderer/settings";
 
 import { addPatch } from "./shared";

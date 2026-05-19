@@ -1,5 +1,5 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -38,6 +38,6 @@ function loadSettings<T extends object = any>(file: string, name: string) {
     return store;
 }
 
-export const Settings = loadSettings<TSettings>(SETTINGS_FILE, "Equibop settings");
+export const Settings = loadSettings<TSettings>(SETTINGS_FILE, "Nunbop settings");
 export const VencordSettings = loadSettings<any>(VENCORD_SETTINGS_FILE, "Vencord settings");
-export const State = loadSettings<TState>(STATE_FILE, "Equibop state");
+export const State = loadSettings<TState>(STATE_FILE, "Nunbop state");

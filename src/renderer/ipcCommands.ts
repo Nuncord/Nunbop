@@ -1,10 +1,10 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2025 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { SettingsRouter } from "@equicord/types/webpack/common";
+import { SettingsRouter } from "@nuncord/types/webpack/common";
 import { IpcCommands } from "shared/IpcEvents";
 
 import { openScreenSharePicker } from "./components/ScreenSharePicker";

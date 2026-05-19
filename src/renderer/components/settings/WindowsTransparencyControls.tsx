@@ -1,12 +1,12 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { Heading, Paragraph } from "@equicord/types/components";
-import { Margins } from "@equicord/types/utils";
-import { Select } from "@equicord/types/webpack/common";
+import { Heading, Paragraph } from "@nuncord/types/components";
+import { Margins } from "@nuncord/types/utils";
+import { Select } from "@nuncord/types/webpack/common";
 
 import { SimpleErrorBoundary } from "../SimpleErrorBoundary";
 import { SettingsComponent } from "./Settings";
@@ -36,7 +36,7 @@ export const WindowsTransparencyControls: SettingsComponent = ({ settings }) => 
                         },
                         { label: "Tabbed (variant of Mica with stronger background tinting)", value: "tabbed" },
                         {
-                            label: "Acrylic (blurs the window behind Equibop for a translucent background)",
+                            label: "Acrylic (blurs the window behind Nunbop for a translucent background)",
                             value: "acrylic"
                         }
                     ]}

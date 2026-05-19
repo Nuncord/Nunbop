@@ -1,12 +1,12 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2025 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 import "./UserAssets.css";
 
-import { BaseText, Button, FormSwitch } from "@equicord/types/components";
+import { BaseText, Button, FormSwitch } from "@nuncord/types/components";
 import {
     Margins,
     ModalCloseButton,
@@ -17,8 +17,8 @@ import {
     openModal,
     wordsFromCamel,
     wordsToTitle
-} from "@equicord/types/utils";
-import { showToast, useState } from "@equicord/types/webpack/common";
+} from "@nuncord/types/utils";
+import { showToast, useState } from "@nuncord/types/webpack/common";
 import { UserAssetType } from "main/userAssets";
 import { useSettings } from "renderer/settings";
 

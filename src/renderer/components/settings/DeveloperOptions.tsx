@@ -1,10 +1,10 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2025 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { BaseText, Button, Heading, Paragraph, TextButton } from "@equicord/types/components";
+import { BaseText, Button, Heading, Paragraph, TextButton } from "@nuncord/types/components";
 import {
     Margins,
     ModalCloseButton,
@@ -14,8 +14,8 @@ import {
     ModalSize,
     openModal,
     useForceUpdater
-} from "@equicord/types/utils";
-import { Toasts } from "@equicord/types/webpack/common";
+} from "@nuncord/types/utils";
+import { Toasts } from "@nuncord/types/webpack/common";
 import { Settings } from "shared/settings";
 
 import { cl, SettingsComponent } from "./Settings";
@@ -29,15 +29,15 @@ function openDeveloperOptionsModal(settings: Settings) {
         <ModalRoot {...props} size={ModalSize.MEDIUM}>
             <ModalHeader>
                 <BaseText size="lg" weight="semibold" tag="h3" style={{ flexGrow: 1 }}>
-                    Equibop Developer Options
+                    Nunbop Developer Options
                 </BaseText>
                 <ModalCloseButton onClick={props.onClose} />
             </ModalHeader>
 
             <ModalContent>
                 <div style={{ padding: "1em 0" }}>
-                    <Heading tag="h5">Equicord Location</Heading>
-                    <EquicordLocationPicker settings={settings} />
+                    <Heading tag="h5">Nuncord Location</Heading>
+                    <NuncordLocationPicker settings={settings} />
 
                     <Heading tag="h5" className={Margins.top16}>
                         Debugging
@@ -54,15 +54,15 @@ function openDeveloperOptionsModal(settings: Settings) {
     ));
 }
 
-const EquicordLocationPicker: SettingsComponent = ({ settings }) => {
+const NuncordLocationPicker: SettingsComponent = ({ settings }) => {
     const forceUpdate = useForceUpdater();
-    const usingCustomEquicordDir = VesktopNative.fileManager.isUsingCustomVencordDir();
+    const usingCustomNuncordDir = VesktopNative.fileManager.isUsingCustomVencordDir();
 
     return (
         <>
             <Paragraph>
-                Equicord files are loaded from{" "}
-                {usingCustomEquicordDir ? (
+                Nuncord files are loaded from{" "}
+                {usingCustomNuncordDir ? (
                     <TextButton
                         variant="link"
                         onClick={e => {
@@ -80,13 +80,13 @@ const EquicordLocationPicker: SettingsComponent = ({ settings }) => {
                 <Button
                     size={"small"}
                     onClick={async () => {
-                        const choice = await VesktopNative.fileManager.selectEquicordDir();
+                        const choice = await VesktopNative.fileManager.selectNuncordDir();
                         switch (choice) {
                             case "cancelled":
                                 break;
                             case "ok":
                                 Toasts.show({
-                                    message: "Equicord install changed. Fully restart Equibop to apply.",
+                                    message: "Nuncord install changed. Fully restart Nunbop to apply.",
                                     id: Toasts.genId(),
                                     type: Toasts.Type.SUCCESS
                                 });
@@ -94,7 +94,7 @@ const EquicordLocationPicker: SettingsComponent = ({ settings }) => {
                             case "invalid":
                                 Toasts.show({
                                     message:
-                                        "You did not choose a valid Equicord install. Make sure you're selecting the dist dir!",
+                                        "You did not choose a valid Nuncord install. Make sure you're selecting the dist dir!",
                                     id: Toasts.genId(),
                                     type: Toasts.Type.FAILURE
                                 });
@@ -109,7 +109,7 @@ const EquicordLocationPicker: SettingsComponent = ({ settings }) => {
                     size={"small"}
                     variant="dangerPrimary"
                     onClick={async () => {
-                        await VesktopNative.fileManager.selectEquicordDir(null);
+                        await VesktopNative.fileManager.selectNuncordDir(null);
                         forceUpdate();
                     }}
                 >

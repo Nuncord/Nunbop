@@ -1,6 +1,6 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
- * Copyright (c) 2025 Vendicated and Vesktop contributors
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
+ * Copyright (c) 2026 Vendicated and Nunbop contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -220,13 +220,13 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
 
                 const pixmap = await getCachedTrayPixmap(trayVariant);
                 nativeSNI.setStatusNotifierIcon(pixmap);
-                nativeSNI.setStatusNotifierTitle("Equibop");
+                nativeSNI.setStatusNotifierTitle("Nunbop");
 
                 const menuItems = [
                     { id: 1, label: win.isVisible() ? "Hide" : "Open", enabled: true, visible: true },
                     { id: 2, label: "About", enabled: true, visible: true },
-                    { id: 3, label: "Repair Equicord", enabled: true, visible: true },
-                    { id: 4, label: "Reset Equibop", enabled: true, visible: true },
+                    { id: 3, label: "Repair Nuncord", enabled: true, visible: true },
+                    { id: 4, label: "Reset Nunbop", enabled: true, visible: true },
                     { id: 5, label: "Launch Arguments", enabled: true, visible: true },
                     {
                         id: 6,
@@ -325,7 +325,7 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
             click: createAboutWindow
         },
         {
-            label: "Repair Equicord",
+            label: "Repair Nuncord",
             async click() {
                 await downloadVencordAsar();
                 destroyTray();
@@ -334,7 +334,7 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
             }
         },
         {
-            label: "Reset Equibop",
+            label: "Reset Nunbop",
             async click() {
                 await clearData(win);
             }
@@ -373,7 +373,7 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
     try {
         const initialImage = await getCachedTrayImage(trayVariant);
         tray = new Tray(initialImage);
-        tray.setToolTip("Equibop");
+        tray.setToolTip("Nunbop");
 
         if (isLinux) {
             tray.on("click", onTrayClick);

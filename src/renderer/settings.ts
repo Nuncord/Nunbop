@@ -1,13 +1,13 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { useEffect, useReducer } from "@equicord/types/webpack/common";
+import { useEffect, useReducer } from "@nuncord/types/webpack/common";
 import { SettingsStore } from "shared/utils/SettingsStore";
 
-import { VesktopLogger } from "./logger";
+import { NunbopLogger } from "./logger";
 import { localStorage } from "./utils";
 
 export const Settings = new SettingsStore(VesktopNative.settings.get());
@@ -39,7 +39,7 @@ interface TState {
     };
 }
 
-const stateKey = "EquibopState";
+const stateKey = "NunbopState";
 
 const currentState: TState = (() => {
     const stored = localStorage.getItem(stateKey);
@@ -47,7 +47,7 @@ const currentState: TState = (() => {
     try {
         return JSON.parse(stored);
     } catch (e) {
-        VesktopLogger.error("Failed to parse stored state", e);
+        NunbopLogger.error("Failed to parse stored state", e);
         return {};
     }
 })();

@@ -1,5 +1,5 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -85,25 +85,25 @@ function initMenuBar(win: BrowserWindow) {
 
     const subMenu = [
         {
-            label: "About Equibop",
+            label: "About Nunbop",
             click: createAboutWindow
         },
         {
-            label: "Force Update Equicord",
+            label: "Force Update Nuncord",
             async click() {
                 await downloadVencordAsar();
                 destroyTray();
                 app.relaunch();
                 app.quit();
             },
-            toolTip: "Equibop will automatically restart after this operation"
+            toolTip: "Nunbop will automatically restart after this operation"
         },
         {
-            label: "Reset Equibop",
+            label: "Reset Nunbop",
             async click() {
                 await clearData(win);
             },
-            toolTip: "Equibop will automatically restart after this operation"
+            toolTip: "Nunbop will automatically restart after this operation"
         },
         {
             label: "Relaunch",
@@ -171,7 +171,7 @@ function initMenuBar(win: BrowserWindow) {
 
     const menuItems = [
         {
-            label: "Equibop",
+            label: "Nunbop",
             role: "appMenu",
             submenu: subMenu.filter(isTruthy)
         },
@@ -277,7 +277,7 @@ function initStaticTitle(win: BrowserWindow) {
 
     addSettingsListener("staticTitle", enabled => {
         if (enabled) {
-            win.setTitle("Equibop");
+            win.setTitle("Nunbop");
             win.on("page-title-updated", listener);
         } else {
             win.off("page-title-updated", listener);
@@ -373,7 +373,7 @@ function buildBrowserWindowOptions(): BrowserWindowConstructorOptions {
     }
 
     if (staticTitle) {
-        options.title = "Equibop";
+        options.title = "Nunbop";
     }
 
     if (process.platform === "darwin") {

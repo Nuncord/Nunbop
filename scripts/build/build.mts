@@ -118,7 +118,7 @@ await Promise.all([
         inject: ["./scripts/build/injectReact.mjs"],
         jsxFactory: "VencordCreateElement",
         jsxFragment: "VencordFragment",
-        external: ["@equicord/types/*"],
+        external: ["@nuncord/types/*"],
         plugins: [vencordDep, includeDirPlugin("patches", "src/renderer/patches")],
         footer: { js: "//# sourceURL=NunbopRenderer" }
     })

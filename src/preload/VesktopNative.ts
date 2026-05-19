@@ -1,5 +1,5 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -50,11 +50,11 @@ export const VesktopNative = {
                 originalPlatform: string;
                 spoofedPlatform: string | null;
             }>(IpcEvents.GET_PLATFORM_SPOOF_INFO),
-        getRendererCss: () => invoke<string>(IpcEvents.GET_VESKTOP_RENDERER_CSS),
+        getRendererCss: () => invoke<string>(IpcEvents.GET_RENDERER_CSS),
         onRendererCssUpdate: (cb: (newCss: string) => void) => {
             if (!IS_DEV) return;
 
-            ipcRenderer.on(IpcEvents.VESKTOP_RENDERER_CSS_UPDATE, (_e, newCss: string) => cb(newCss));
+            ipcRenderer.on(IpcEvents.RENDERER_CSS_UPDATE, (_e, newCss: string) => cb(newCss));
         }
     },
     autostart: {
@@ -65,7 +65,7 @@ export const VesktopNative = {
     fileManager: {
         isUsingCustomVencordDir: () => sendSync<boolean>(IpcEvents.IS_USING_CUSTOM_VENCORD_DIR),
         showCustomVencordDir: () => invoke<void>(IpcEvents.SHOW_CUSTOM_VENCORD_DIR),
-        selectEquicordDir: (value?: null) =>
+        selectNuncordDir: (value?: null) =>
             invoke<"cancelled" | "invalid" | "ok">(IpcEvents.SELECT_VENCORD_DIR, value),
         chooseUserAsset: (asset: string, value?: null) =>
             invoke<"cancelled" | "invalid" | "ok" | "failed">(IpcEvents.CHOOSE_USER_ASSET, asset, value)

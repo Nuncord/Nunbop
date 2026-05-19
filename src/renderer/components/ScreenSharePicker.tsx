@@ -1,12 +1,12 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 import "./screenSharePicker.css";
 
-import { classNameFactory } from "@equicord/types/api/Styles";
+import { classNameFactory } from "@nuncord/types/api/Styles";
 import {
     BaseText,
     Button,
@@ -19,7 +19,7 @@ import {
     Paragraph,
     RestartIcon,
     Span
-} from "@equicord/types/components";
+} from "@nuncord/types/components";
 import {
     closeModal,
     Logger,
@@ -29,9 +29,9 @@ import {
     openModal,
     useAwaiter,
     useForceUpdater
-} from "@equicord/types/utils";
-import { onceReady } from "@equicord/types/webpack";
-import { FluxDispatcher, MediaEngineStore, Select, UserStore, useState } from "@equicord/types/webpack/common";
+} from "@nuncord/types/utils";
+import { onceReady } from "@nuncord/types/webpack";
+import { FluxDispatcher, MediaEngineStore, Select, UserStore, useState } from "@nuncord/types/webpack/common";
 import { Node } from "@vencord/venmic";
 import type { Dispatch, SetStateAction } from "react";
 import { addPatch } from "renderer/patches/shared";
@@ -77,7 +77,7 @@ interface Source {
 
 export let currentSettings: StreamSettings | null = null;
 
-const logger = new Logger("EquibopScreenShare");
+const logger = new Logger("NunbopScreenShare");
 
 addPatch({
     patches: [

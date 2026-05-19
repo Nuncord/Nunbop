@@ -1,5 +1,5 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2024 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -14,7 +14,7 @@ import { IpcEvents } from "shared/IpcEvents";
 import { mainWin } from "./mainWindow";
 
 const xdgRuntimeDir = process.env.XDG_RUNTIME_DIR || process.env.TMP || "/tmp";
-const socketFile = join(xdgRuntimeDir, "vesktop-ipc");
+const socketFile = join(xdgRuntimeDir, "nunbop-ipc");
 
 const Actions = new Set([IpcEvents.TOGGLE_SELF_DEAF, IpcEvents.TOGGLE_SELF_MUTE]);
 

@@ -1,6 +1,6 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
- * Copyright (c) 2025 Vendicated and Vesktop contributors
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
+ * Copyright (c) 2026 Vendicated and Nunbop contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -14,7 +14,7 @@ import { Millis } from "shared/utils/millis";
 import { State } from "./settings";
 import { handle } from "./utils/ipcWrappers";
 import { makeLinksOpenExternally } from "./utils/makeLinksOpenExternally";
-import { loadView } from "./vesktopStatic";
+import { loadView } from "./nunbopStatic";
 
 let updaterWindow: BrowserWindow | null = null;
 
@@ -45,7 +45,7 @@ handle(IpcEvents.UPDATER_OPEN, async () => {
 
 function openUpdater(update: UpdateInfo) {
     updaterWindow = new BrowserWindow({
-        title: "Equibop Updater",
+        title: "Nunbop Updater",
         autoHideMenuBar: true,
         ...(process.platform === "win32"
             ? { icon: join(STATIC_DIR, "icon.ico") }

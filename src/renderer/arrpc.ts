@@ -1,23 +1,23 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2025 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { Logger } from "@equicord/types/utils";
-import { findLazy, onceReady } from "@equicord/types/webpack";
+import { Logger } from "@nuncord/types/utils";
+import { findLazy, onceReady } from "@nuncord/types/webpack";
 import {
     ApplicationAssetUtils,
     fetchApplicationsRPC,
     FluxDispatcher,
     InviteActions,
     StreamerModeStore
-} from "@equicord/types/webpack/common";
+} from "@nuncord/types/webpack/common";
 import { IpcCommands } from "shared/IpcEvents";
 
 import { onIpcCommand } from "./ipcCommands";
 
-const logger = new Logger("EquibopRPC", "#5865f2");
+const logger = new Logger("NunbopRPC", "#5865f2");
 
 interface RPCApplication {
     id: string;

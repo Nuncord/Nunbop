@@ -1,10 +1,10 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { Patch } from "@equicord/types/utils/types";
+import { Patch } from "@nuncord/types/utils/types";
 
 window.VesktopPatchGlobals = {};
 
@@ -17,7 +17,7 @@ export function addPatch<P extends PatchData>(p: P) {
     const { patches, ...globals } = p;
 
     for (const patch of patches) {
-        Vencord.Plugins.addPatch(patch, "Equibop", "VesktopPatchGlobals");
+        Vencord.Plugins.addPatch(patch, "Nunbop", "VesktopPatchGlobals");
     }
 
     Object.assign(VesktopPatchGlobals, globals);

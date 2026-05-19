@@ -1,5 +1,5 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -9,9 +9,9 @@ export const enum IpcEvents {
     DEPRECATED_GET_VENCORD_PRELOAD_SCRIPT_PATH = "DEPRECATED_GET_VENCORD_PRELOAD_SCRIPT_PATH",
     GET_VENCORD_RENDERER_SCRIPT = "VCD_GET_VC_RENDERER_SCRIPT",
 
-    GET_VESKTOP_RENDERER_SCRIPT = "VCD_GET_RENDERER_SCRIPT",
-    GET_VESKTOP_RENDERER_CSS = "VCD_GET_RENDERER_CSS",
-    VESKTOP_RENDERER_CSS_UPDATE = "VCD_PRELOAD_RENDERER_CSS_UPDATE",
+    GET_RENDERER_SCRIPT = "VCD_GET_RENDERER_SCRIPT",
+    GET_RENDERER_CSS = "VCD_GET_RENDERER_CSS",
+    RENDERER_CSS_UPDATE = "VCD_PRELOAD_RENDERER_CSS_UPDATE",
 
     GET_VERSION = "VCD_GET_VERSION",
     GET_GIT_HASH = "VCD_GET_GIT_HASH",
