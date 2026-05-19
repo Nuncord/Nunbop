@@ -66,7 +66,7 @@ export default defineConfig(
                 "error",
                 {
                     files: ["scripts/header.txt"],
-                    templates: { author: [".*", "Vendicated and Vesktop contributors"] }
+                    templates: { author: [".*", "Vendicated and Nunbop contributors"] }
                 }
             ],
 
