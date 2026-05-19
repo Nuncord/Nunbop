@@ -124,13 +124,13 @@
             ],
             "desktop": {
                 "entry": {
-                    "Name": "Equibop",
+                    "Name": "Nunbop",
                     "GenericName": "Internet Messenger",
                     "Type": "Application",
                     "Categories": "Network;InstantMessaging;Chat;",
-                    "Keywords": "discord;vencord;electron;chat;equibop",
+                    "Keywords": "discord;vencord;electron;chat;nunbop",
                     "MimeType": "x-scheme-handler/discord",
-                    "StartupWMClass": "equibop"
+                    "StartupWMClass": "nunbop"
                 }
             }
         },
