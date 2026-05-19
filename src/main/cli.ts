@@ -1,14 +1,18 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
- * Copyright (c) 2025 Vendicated and Vesktop contributors
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
+ * Copyright (c) 2026 Vendicated and Nunbop contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 import { app } from "electron";
-import { basename } from "path";
-import { IpcEvents } from "shared/IpcEvents";
+import { readFileSync, unlinkSync, writeFileSync } from "fs";
+import { tmpdir } from "os";
+import { basename, join, resolve } from "path";
+import { IpcCommands, IpcEvents } from "shared/IpcEvents";
 import { stripIndent } from "shared/utils/text";
 import { parseArgs, ParseArgsOptionDescriptor } from "util";
+
+export let isQueryInstance = false;
 
 type Option = ParseArgsOptionDescriptor & {
     description: string;
@@ -59,10 +63,27 @@ const options = {
         hidden: process.platform !== "linux",
         description: "Toggle your deafen status"
     },
+    "toggle-vad": {
+        type: "boolean",
+        hidden: process.platform !== "linux",
+        description: "Toggle Voice Activity Detection (Voice Activity <-> Push To Talk)"
+    },
+    "is-in-call": {
+        type: "boolean",
+        description: "Check if you are currently in a voice call"
+    },
+    "get-voice-channel-name": {
+        type: "boolean",
+        description: "Get the name of the voice channel you are in"
+    },
+    "get-call-duration": {
+        type: "boolean",
+        description: "Get the duration of the current call ([hh]:mm:ss)"
+    },
     repair: {
         type: "boolean",
         short: "r",
-        description: "Re-download Equicord and restart"
+        description: "Re-download Nuncord and restart"
     }
 } satisfies Record<string, Option>;
 
@@ -81,7 +102,7 @@ const extraOptions = {
     "ozone-platform": {
         hidden: process.platform !== "linux",
         type: "string",
-        description: "Whether to run Equibop in Wayland or X11 (XWayland)",
+        description: "Whether to run Nunbop in Wayland or X11 (XWayland)",
         options: ["x11", "wayland"]
     }
 } satisfies Record<string, Option>;
@@ -135,7 +156,7 @@ export function checkCommandLineForHelpOrVersion() {
             Chromium Options:
               See <https://peter.sh/experiments/chromium-command-line-switches> - only some of them work
 
-            Vesktop Options:
+            Nunbop Options:
         `;
 
         const optionLines = Object.entries(options)
@@ -182,33 +203,111 @@ export function checkCommandLineForHelpOrVersion() {
 }
 
 function checkCommandLineForToggleCommands() {
-    const { "toggle-mic": toggleMic, "toggle-deafen": toggleDeafen } = CommandLine.values;
+    const { "toggle-mic": toggleMic, "toggle-deafen": toggleDeafen, "toggle-vad": toggleVad } = CommandLine.values;
 
-    if (!toggleMic && !toggleDeafen) return false;
+    if (!toggleMic && !toggleDeafen && !toggleVad) return false;
     if (!app.requestSingleInstanceLock({ IS_DEV })) {
         app.exit(0);
     }
 
-    console.error("Equibop is not running. Toggle commands require a running instance.");
+    console.error("Nunbop is not running. Toggle commands require a running instance.");
+    app.exit(1);
+}
+
+function checkCommandLineForQueryCommands() {
+    const {
+        "is-in-call": isInCall,
+        "get-voice-channel-name": getVoiceChannelName,
+        "get-call-duration": getCallDuration
+    } = CommandLine.values;
+
+    if (!isInCall && !getVoiceChannelName && !getCallDuration) return false;
+
+    const query = isInCall
+        ? IpcCommands.QUERY_IS_IN_CALL
+        : getVoiceChannelName
+          ? IpcCommands.QUERY_VOICE_CHANNEL_NAME
+          : IpcCommands.QUERY_CALL_DURATION;
+    const responseFile = join(tmpdir(), `nunbop-query-${Date.now()}-${process.pid}.tmp`);
+
+    if (!app.requestSingleInstanceLock({ IS_DEV, query, responseFile })) {
+        isQueryInstance = true;
+        // The first instance will make a response file for us to use.
+        // Poll for it.
+        const startTime = Date.now();
+        const timeout = 5000;
+        const interval = setInterval(() => {
+            try {
+                const result = readFileSync(responseFile, "utf-8");
+                clearInterval(interval);
+                try {
+                    unlinkSync(responseFile);
+                } catch {}
+                console.log(result);
+                app.exit(0);
+            } catch {
+                if (Date.now() - startTime > timeout) {
+                    clearInterval(interval);
+                    try {
+                        unlinkSync(responseFile);
+                    } catch {}
+                    console.error("Timed out waiting for response from running instance.");
+                    app.exit(1);
+                }
+            }
+        }, 50);
+        return true;
+    }
+
+    console.error("Nunbop is not running. Query commands require a running instance.");
     app.exit(1);
 }
 
 function setupSecondInstanceHandler() {
     app.on("second-instance", (_event, commandLine, _cwd, data: any) => {
+        if (data.query && data.responseFile) {
+            const allowedQueries: string[] = [
+                IpcCommands.QUERY_IS_IN_CALL,
+                IpcCommands.QUERY_VOICE_CHANNEL_NAME,
+                IpcCommands.QUERY_CALL_DURATION
+            ];
+
+            if (!allowedQueries.includes(data.query)) return;
+
+            const tempDir = tmpdir();
+            const resolvedPath = resolve(data.responseFile);
+            if (!resolvedPath.startsWith(tempDir)) return;
+
+            import("./ipcCommands")
+                .then(({ sendRendererCommand }) => sendRendererCommand<string>(data.query))
+                .then(result => {
+                    writeFileSync(resolvedPath, String(result));
+                })
+                .catch(err => {
+                    writeFileSync(resolvedPath, `Error: ${err}`);
+                });
+            return;
+        }
+
         if (data.IS_DEV) {
             app.quit();
             return;
         }
 
-        const isToggleCommand = commandLine.some(arg => arg === "--toggle-mic" || arg === "--toggle-deafen");
+        const isToggleCommand = commandLine.some(
+            arg => arg === "--toggle-mic" || arg === "--toggle-deafen" || arg === "--toggle-vad"
+        );
         if (isToggleCommand) {
-            const command = commandLine.includes("--toggle-mic")
-                ? IpcEvents.TOGGLE_SELF_MUTE
-                : IpcEvents.TOGGLE_SELF_DEAF;
+            const commands: IpcEvents[] = [];
+            if (commandLine.includes("--toggle-mic")) commands.push(IpcEvents.TOGGLE_SELF_MUTE);
+            if (commandLine.includes("--toggle-deafen")) commands.push(IpcEvents.TOGGLE_SELF_DEAF);
+            if (commandLine.includes("--toggle-vad")) commands.push(IpcEvents.TOGGLE_VAD);
 
             import("./mainWindow").then(({ mainWin }) => {
                 if (mainWin) {
-                    mainWin.webContents.send(command);
+                    for (const command of commands) {
+                        mainWin.webContents.send(command);
+                    }
                 }
             });
         } else {
@@ -225,13 +324,14 @@ function setupSecondInstanceHandler() {
 
 function checkForSecondInstance() {
     if (checkCommandLineForToggleCommands()) return;
+    if (checkCommandLineForQueryCommands()) return;
 
     if (!app.requestSingleInstanceLock({ IS_DEV })) {
         if (IS_DEV) {
-            console.log("Equibop is already running. Quitting previous instance...");
+            console.log("Nunbop is already running. Quitting previous instance...");
             return;
         } else {
-            console.log("Equibop is already running. Quitting...");
+            console.log("Nunbop is already running. Quitting...");
             app.exit(0);
         }
     }
