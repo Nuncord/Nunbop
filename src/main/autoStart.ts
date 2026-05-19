@@ -1,5 +1,5 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -82,8 +82,8 @@ const autoStartWindowsMac: AutoStart = {
     disable: () => app.setLoginItemSettings({ openAtLogin: false })
 };
 
-// The portal call uses the app id by default, which is org.chromium.Chromium, even in packaged Vesktop.
-// This leads to an autostart entry named "Chromium" instead of "Vesktop".
+// The portal call uses the app id by default, which is org.chromium.Chromium, even in packaged Nunbop.
+// This leads to an autostart entry named "Chromium" instead of "Nunbop".
 // Thus, only use the portal inside Flatpak, where the app is actually correct.
 // Maybe there is a way to fix it outside of flatpak, but I couldn't figure it out.
 export const autoStart =
