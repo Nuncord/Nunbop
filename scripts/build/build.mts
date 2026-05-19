@@ -1,5 +1,5 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -38,7 +38,7 @@ const NodeCommonOpts: BuildOptions = {
     },
     define: {
         IS_DEV: JSON.stringify(isDev),
-        EQUIBOP_GIT_HASH: JSON.stringify(gitHash)
+        NUNBOP_GIT_HASH: JSON.stringify(gitHash)
     }
 };
 
@@ -89,29 +89,29 @@ await Promise.all([
         ...NodeCommonOpts,
         entryPoints: ["src/main/index.ts"],
         outfile: "dist/js/main.js",
-        footer: { js: "//# sourceURL=VesktopMain" }
+        footer: { js: "//# sourceURL=NunbopMain" }
     }),
     createContext({
         ...NodeCommonOpts,
         entryPoints: ["src/preload/index.ts"],
         outfile: "dist/js/preload.js",
-        footer: { js: "//# sourceURL=VesktopPreload" }
+        footer: { js: "//# sourceURL=NunbopPreload" }
     }),
     createContext({
         ...NodeCommonOpts,
         entryPoints: ["src/preload/splash.ts"],
         outfile: "dist/js/splashPreload.js",
-        footer: { js: "//# sourceURL=VesktopSplashPreload" }
+        footer: { js: "//# sourceURL=NunbopSplashPreload" }
     }),
     createContext({
         ...NodeCommonOpts,
         entryPoints: ["src/preload/updater.ts"],
         outfile: "dist/js/updaterPreload.js",
-        footer: { js: "//# sourceURL=VesktopUpdaterPreload" }
+        footer: { js: "//# sourceURL=NunbopUpdaterPreload" }
     }),
     createContext({
         ...CommonOpts,
-        globalName: "Equibop",
+        globalName: "Nunbop",
         entryPoints: ["src/renderer/index.ts"],
         outfile: "dist/js/renderer.js",
         format: "iife",
@@ -120,7 +120,7 @@ await Promise.all([
         jsxFragment: "VencordFragment",
         external: ["@equicord/types/*"],
         plugins: [vencordDep, includeDirPlugin("patches", "src/renderer/patches")],
-        footer: { js: "//# sourceURL=VesktopRenderer" }
+        footer: { js: "//# sourceURL=NunbopRenderer" }
     })
 ]);
 
