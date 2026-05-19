@@ -1,5 +1,5 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Nunbop, a desktop app aiming to give you a snappier Discord Experience
  * Copyright (c) 2023 Vendicated and Vencord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -9,7 +9,7 @@ import { join } from "path";
 import { STATIC_DIR } from "shared/paths";
 
 import { makeLinksOpenExternally } from "./utils/makeLinksOpenExternally";
-import { loadView } from "./vesktopStatic";
+import { loadView } from "./nunbopStatic";
 
 export async function createAboutWindow() {
     const height = 750;
